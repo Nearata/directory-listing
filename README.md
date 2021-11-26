@@ -2,6 +2,8 @@
 
 > Lists files and directories that exist in the `public` folder.
 
+![preview](preview.png)
+
 ## Deployment
 
 Read [Uvicorn Deployment](https://www.uvicorn.org/deployment/).
