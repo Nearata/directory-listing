@@ -4,6 +4,11 @@
 
 ![preview](preview.png)
 
+## Requirements
+
+- Python 3.9+
+- Pipenv
+
 ## Deployment
 
 Read [Uvicorn Deployment](https://www.uvicorn.org/deployment/).
