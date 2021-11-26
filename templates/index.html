@@ -23,10 +23,14 @@
         <div class="divider"></div>
         <main class="main">
             <div class="table">
+                <div class="head"></div>
                 <div class="head">Name</div>
                 <div class="head">Last modified</div>
                 <div class="head">Size</div>
                 {% if parent_directory %}
+                <div class="icon">
+                    <img src="{{ url_for('static', path='icon/undo-solid.svg') }}" alt="">
+                </div>
                 <div class="name">
                     <a href="{{ parent_directory }}">Parent Directory</a>
                 </div>
@@ -34,6 +38,15 @@
                 <div class="size">-</div>
                 {% endif %}
                 {% for i in files %}
+                {% if i.is_dir %}
+                <div class="icon">
+                    <img src="{{ url_for('static', path='icon/folder-solid.svg') }}" alt="">
+                </div>
+                {% else %}
+                <div class="icon">
+                    <img src="{{ url_for('static', path='icon/file-solid.svg') }}" alt="">
+                </div>
+                {% endif %}
                 <div class="href">
                     <a href="{{ i.href }}">{{ i.filename }}</a>
                 </div>

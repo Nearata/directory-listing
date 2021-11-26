@@ -10,6 +10,12 @@ Read [Uvicorn Deployment](https://www.uvicorn.org/deployment/).
 
 Soon.
 
+## Icons
+
+- Made by Font Awesome.
+- [Font Awesome license](https://fontawesome.com/license)
+- No changes were made.
+
 ## License
 
 Distributed under the MIT license. See [LICENSE](LICENSE) for details.

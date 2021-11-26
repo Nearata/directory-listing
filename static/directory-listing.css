@@ -1,5 +1,12 @@
 body {
     font-family: "Fira Code", monospace;
+    background-color: #f9f9f9;
+}
+
+a {
+    color: #255C71;
+    text-decoration: none;
+    outline: none;
 }
 
 .h1 {
@@ -20,13 +27,17 @@ body {
 
 .table {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 16px 1fr 1fr 1fr;
     gap: 1rem;
 }
 
 .table .head {
     font-weight: 700;
     font-size: 1.125rem;
+}
+
+.table .icon {
+    width: 16px;
 }
 
 .divider {
