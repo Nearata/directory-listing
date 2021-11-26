@@ -1,6 +1,8 @@
+from datetime import datetime
 from pathlib import Path
 from typing import List
 
+from humanize import naturalsize
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.routing import Mount, Route
@@ -28,15 +30,18 @@ async def homepage(request: Request) -> _TemplateResponse:
 
     files2 = []
     for i in files:
-        f = {"is_dir": i.is_dir(), "filename": i.name}
+        f = {
+            "is_dir": i.is_dir(),
+            "filename": i.name,
+            "size": naturalsize(i.stat().st_size, gnu=True),
+            "date": datetime.fromtimestamp(i.stat().st_mtime).strftime(
+                "%Y-%m-%d %H:%M:%S"
+            ),
+        }
         url = request.url_for("homepage")
 
         if i.is_dir():
-            f.update(
-                {
-                    "href": f"{url}?dir={i.as_posix().replace('public', '')}"
-                }
-            )
+            f.update({"href": f"{url}?dir={i.as_posix().replace('public', '')}"})
         else:
             f.update(
                 {
@@ -61,6 +66,7 @@ def create_app() -> Starlette:
     routes = [
         Route("/", homepage),
         Mount("/public", StaticFiles(directory="public"), name="public"),
+        Mount("/static", StaticFiles(directory="static"), name="static"),
     ]
 
     app = Starlette(debug=DEBUG, routes=routes)

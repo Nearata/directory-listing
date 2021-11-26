@@ -6,13 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directory Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', path='modern-normalize.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='directory-listing.css') }}">
 </head>
 
 <body>
-    <div class="app">
-        {% for i in files %}
-            <a href="{{ i.href }}">{{ i.filename }}</a>
-        {% endfor %}
+    <div class="page">
+        <header class="header">
+            <h1 class="h1">
+                <a href="/">Directory Listing</a>
+            </h1>
+        </header>
+        <div class="divider"></div>
+        <main class="main">
+            <div class="table">
+                <div class="head">Name</div>
+                <div class="head">Last modified</div>
+                <div class="head">Size</div>
+                {% for i in files %}
+                <div class="href">
+                    <a href="{{ i.href }}">{{ i.filename }}</a>
+                </div>
+                <div class="date">{{ i.date }}</div>
+                <div class="size">{{ i.size }}</div>
+                {% endfor %}
+            </div>
+        </main>
     </div>
 </body>
 
