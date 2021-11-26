@@ -1,6 +1,6 @@
 from datetime import datetime
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from humanize import naturalsize
 from starlette.applications import Starlette
@@ -15,11 +15,17 @@ templates = Jinja2Templates(directory="templates")
 
 
 async def homepage(request: Request) -> _TemplateResponse:
-    query = request.query_params.get("dir")
+    url = request.url_for("homepage")
+    query: Optional[str] = request.query_params.get("dir")
+
     files: List[Path] = []
+    parent_directory = None
 
     if query:
         files.extend(Path("public/" + query).glob("*"))
+
+        if query != "/":
+            parent_directory = f"{url}?dir={Path(query).parent.as_posix()}"
     else:
         files.extend(Path("public").glob("*"))
 
@@ -38,7 +44,6 @@ async def homepage(request: Request) -> _TemplateResponse:
                 "%Y-%m-%d %H:%M:%S"
             ),
         }
-        url = request.url_for("homepage")
 
         if i.is_dir():
             f.update({"href": f"{url}?dir={i.as_posix().replace('public', '')}"})
@@ -58,6 +63,7 @@ async def homepage(request: Request) -> _TemplateResponse:
         {
             "request": request,
             "files": sorted(files2, key=lambda d: d["is_dir"], reverse=True),
+            "parent_directory": parent_directory,
         },
     )
 
