@@ -4,6 +4,8 @@ from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
+from .config import DEBUG
+
 templates = Jinja2Templates(directory="templates")
 
 
@@ -17,6 +19,6 @@ def create_app() -> Starlette:
         Mount("/public", StaticFiles(directory="public"), name="public"),
     ]
 
-    app = Starlette(debug=True, routes=routes)
+    app = Starlette(debug=DEBUG, routes=routes)
 
     return app
