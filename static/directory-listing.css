@@ -1,6 +1,7 @@
 body {
     font-family: "Fira Code", monospace;
     background-color: #f9f9f9;
+    margin: 0 1rem;
 }
 
 a {
