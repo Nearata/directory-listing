@@ -19,8 +19,9 @@ Create a `.env` file in the root of this project.
 
 ### Options
 
-- DEBUG (bool): Toggle starlette debug mode.
-- FAVICON (str): To add a favicon.
+- DEBUG (bool): Toggle starlette debug mode. `Default: False`
+- FAVICON (str): To add a favicon. `Default: None`
+- HEADER (bool): Toogle header. `Default: True`
 
 ## Icons
 

@@ -9,10 +9,13 @@ from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates, _TemplateResponse
 
-from .config import DEBUG, FAVICON
+from .config import DEBUG, FAVICON, HEADER
 
 templates = Jinja2Templates(directory="templates")
-templates.env.globals.update({"favicon": FAVICON})
+templates.env.globals.update({
+    "favicon": FAVICON,
+    "header": HEADER
+})
 
 
 async def homepage(request: Request) -> _TemplateResponse:
