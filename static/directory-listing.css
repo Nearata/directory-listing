@@ -25,6 +25,11 @@ a {
     gap: 1rem;
 }
 
+.header {
+    border-bottom: .2rem solid #000;
+    padding-bottom: 1rem;
+}
+
 .table {
     display: grid;
     grid-template-columns: 16px 1fr 1fr 1fr;
@@ -38,8 +43,4 @@ a {
 
 .table .icon {
     width: 16px;
-}
-
-.divider {
-    border-bottom: .2rem solid #000;
 }
