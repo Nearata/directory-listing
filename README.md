@@ -26,6 +26,7 @@ Create a `.env` file in the root of this project.
 - CUSTOM_CSS (str, comma separated): Add one or multiple css file to the page. `Default: []`
   - Example: `CUSTOM_CSS = custom1.css, custom2.css`
   - Note: The file must be in the `static` folder.
+- RENDER_README (bool): Render readme.md content. `Default: False`
 
 ## Icons
 
