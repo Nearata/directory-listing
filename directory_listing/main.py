@@ -29,10 +29,7 @@ async def homepage(request: Request) -> _TemplateResponse:
     else:
         files.extend(Path("public").glob("*"))
 
-    for i in files:
-        if i.name == ".gitkeep":
-            files.remove(i)
-            break
+    files = [i for i in files if i.name != ".gitkeep"]
 
     files2 = []
     for i in files:
