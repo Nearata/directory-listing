@@ -21,7 +21,11 @@ Create a `.env` file in the root of this project.
 
 - DEBUG (bool): Toggle starlette debug mode. `Default: False`
 - FAVICON (str): To add a favicon. `Default: None`
+  - Note: The file must be in the `static` folder.
 - HEADER (bool): Toogle header. `Default: True`
+- CUSTOM_CSS (str, comma separated): Add one or multiple css file to the page. `Default: []`
+  - Example: `CUSTOM_CSS = custom1.css, custom2.css`
+  - Note: The file must be in the `static` folder.
 
 ## Icons
 

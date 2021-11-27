@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', path='modern-normalize.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='directory-listing.css') }}">
+    {% for css_file in custom_css %}
+    <link rel="stylesheet" href="{{ url_for('static', path=css_file) }}">
+    {% endfor %}
 </head>
 
 <body>
