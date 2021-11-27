@@ -1,6 +1,5 @@
 .vscode/
 public/*
-static/favicon.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

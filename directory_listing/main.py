@@ -3,13 +3,14 @@ from pathlib import Path
 from typing import List, Optional
 
 from humanize import naturalsize
+from markdown import markdown
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates, _TemplateResponse
 
-from .config import CUSTOM_CSS, DEBUG, FAVICON, HEADER
+from .config import CUSTOM_CSS, DEBUG, FAVICON, HEADER, RENDER_README
 
 templates = Jinja2Templates(directory="templates")
 templates.env.globals.update(
@@ -23,14 +24,17 @@ async def homepage(request: Request) -> _TemplateResponse:
 
     files: List[Path] = []
     parent_directory = None
+    current_path = None
 
     if query:
-        files.extend(Path("public/" + query).glob("*"))
+        current_path = Path("public/" + query)
+        files.extend(current_path.glob("*"))
 
         if query != "/":
             parent_directory = f"{url}?dir={Path(query).parent.as_posix()}"
     else:
-        files.extend(Path("public").glob("*"))
+        current_path = Path("public")
+        files.extend(current_path.glob("*"))
 
     files = [i for i in files if i.name != ".gitkeep"]
 
@@ -58,12 +62,20 @@ async def homepage(request: Request) -> _TemplateResponse:
 
         files2.append(f)
 
+    readme = current_path.joinpath("readme.md")
+    html = None
+
+    if RENDER_README and readme.exists():
+        with readme.open() as r:
+            html = markdown(r.read())
+
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
             "files": sorted(files2, key=lambda d: d["is_dir"], reverse=True),
             "parent_directory": parent_directory,
+            "readme": html,
         },
     )
 

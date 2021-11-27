@@ -31,6 +31,11 @@ a {
     padding-bottom: 1rem;
 }
 
+.main {
+    display: grid;
+    gap: 2rem;
+}
+
 .table {
     display: grid;
     grid-template-columns: 16px 1fr 1fr 1fr;
@@ -44,4 +49,18 @@ a {
 
 .table .icon {
     width: 16px;
+}
+
+.readme {
+    border: .1rem solid #000;
+}
+
+.readme .header {
+    border-width: .1rem;
+    padding: .5rem;
+    font-weight: 700;
+}
+
+.readme .body {
+    padding: 0 .5rem;
 }

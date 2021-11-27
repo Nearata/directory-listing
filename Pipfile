@@ -8,11 +8,13 @@ starlette = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 jinja2 = "*"
 humanize = "*"
+markdown = "*"
 
 [dev-packages]
 mypy = "*"
 isort = "*"
 black = "==21.11b1"
+types-markdown = "*"
 
 [requires]
 python_version = "3.9"

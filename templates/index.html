@@ -61,6 +61,14 @@
                 <div class="size">{{ i.size }}</div>
                 {% endfor %}
             </div>
+            {% if readme %}
+            <div class="readme">
+                <div class="header">README.md</div>
+                <div class="body">
+                    {{ readme | safe }}
+                </div>
+            </div>
+            {% endif %}
         </main>
     </div>
 </body>
