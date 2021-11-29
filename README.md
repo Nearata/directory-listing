@@ -34,6 +34,6 @@ Create a `.env` file in the root of this project.
 - [Font Awesome license](https://fontawesome.com/license)
 - No changes were made.
 
-## License
+## Unlicense
 
-Distributed under the MIT license. See [LICENSE](LICENSE) for details.
+See [UNLICENSE](UNLICENSE) for details.
